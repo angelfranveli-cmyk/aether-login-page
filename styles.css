@@ -1,0 +1,597 @@
+
+/* =====================================
+   AETHER LOGIN PAGE
+   1. Reset and basic settings
+===================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --navy: #172d4b;
+    --navy-light: #25486c;
+    --blue: #8db8d7;
+    --blue-pale: #eaf3fa;
+    --white: #ffffff;
+    --text: #253750;
+    --muted: #78879a;
+    --border: #dce4ec;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: var(--white);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button,
+a,
+input {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 3px solid #5a9dd5;
+    outline-offset: 3px;
+}
+
+
+/* =====================================
+   2. Main split-screen layout
+===================================== */
+
+.login-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+
+/* =====================================
+   3. Left branding panel
+===================================== */
+
+.brand-panel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 56px;
+    color: var(--white);
+    background:
+        radial-gradient(
+            ellipse at 20% 15%,
+            rgba(255, 255, 255, 0.2),
+            transparent 38%
+        ),
+        linear-gradient(
+            145deg,
+            #7199ba 0%,
+            #426b91 48%,
+            #172d4b 100%
+        );
+}
+
+.brand-panel::before,
+.brand-panel::after {
+    position: absolute;
+    content: "";
+    border: 1px solid rgba(255, 255, 255, 0.17);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.brand-panel::before {
+    width: 500px;
+    height: 500px;
+    top: -190px;
+    right: -190px;
+}
+
+.brand-panel::after {
+    width: 650px;
+    height: 650px;
+    bottom: -370px;
+    left: -250px;
+}
+
+.brand-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 540px;
+    min-height: 620px;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    font-family: 'Manrope', sans-serif;
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo-symbol {
+    font-size: 32px;
+    line-height: 1;
+    color: #cce8fa;
+}
+
+.brand-message {
+    margin-top: 76px;
+    max-width: 430px;
+}
+
+.eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+}
+
+.brand-message .eyebrow {
+    color: #d7e9f8;
+    margin-bottom: 18px;
+}
+
+.brand-message h1 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(36px, 4vw, 57px);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -2px;
+}
+
+.brand-description {
+    max-width: 340px;
+    margin-top: 20px;
+    color: #e0eaf4;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+
+/* =====================================
+   4. Abstract artwork
+===================================== */
+
+.artwork {
+    position: relative;
+    display: grid;
+    flex: 1;
+    min-height: 220px;
+    place-items: center;
+    isolation: isolate;
+}
+
+.art-circle {
+    position: relative;
+    display: grid;
+    width: clamp(130px, 17vw, 215px);
+    aspect-ratio: 1;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #d8efff,
+            #8cb8d9 35%,
+            #426b91 72%,
+            #25415f 100%
+        );
+    box-shadow:
+        0 25px 80px rgba(12, 30, 52, 0.25),
+        inset -12px -14px 30px rgba(18, 44, 72, 0.25);
+}
+
+.art-circle span {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 70px;
+}
+
+.art-orbit {
+    position: absolute;
+    width: 75%;
+    height: 55%;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 50%;
+}
+
+.orbit-one {
+    transform: rotate(-32deg);
+}
+
+.orbit-two {
+    transform: rotate(48deg);
+}
+
+.art-star {
+    position: absolute;
+    color: #e5f4ff;
+}
+
+.star-one {
+    top: 20%;
+    left: 20%;
+    font-size: 25px;
+}
+
+.star-two {
+    right: 16%;
+    top: 30%;
+    font-size: 35px;
+}
+
+.star-three {
+    bottom: 15%;
+    left: 28%;
+    font-size: 20px;
+}
+
+.brand-footer {
+    margin-top: 20px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #d8e8f5;
+}
+
+.brand-footer span {
+    margin: 0 8px;
+}
+
+
+/* =====================================
+   5. Right form panel
+===================================== */
+
+.form-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 48px;
+    background:
+        radial-gradient(
+            ellipse at 100% 0%,
+            #f0f6fb 0%,
+            transparent 40%
+        ),
+        var(--white);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 390px;
+}
+
+.form-logo {
+    color: var(--navy);
+    margin-bottom: 52px;
+}
+
+.form-logo .logo-symbol {
+    color: #557fa6;
+}
+
+.form-heading {
+    margin-bottom: 28px;
+}
+
+.form-heading .eyebrow {
+    color: #557fa6;
+    margin-bottom: 10px;
+}
+
+.form-heading h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(25px, 2.5vw, 32px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--navy);
+}
+
+.form-heading > p:last-child {
+    margin-top: 9px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* =====================================
+   6. Google button and divider
+===================================== */
+
+.google-button {
+    width: 100%;
+    min-height: 49px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--white);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.google-button:hover {
+    background: #f5f9fc;
+    border-color: #a9bfd3;
+}
+
+.google-icon {
+    font-family: Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    color: #4285f4;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 25px 0;
+}
+
+.divider span {
+    height: 1px;
+    flex: 1;
+    background: var(--border);
+}
+
+.divider p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+
+/* =====================================
+   7. Form inputs
+===================================== */
+
+.form-group {
+    margin-bottom: 21px;
+}
+
+.form-group > label,
+.password-heading label {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    height: 49px;
+    padding: 0 15px;
+    border: 1px solid #d5dfe9;
+    border-radius: 9px;
+    outline: none;
+    background: var(--white);
+    color: var(--navy);
+    font-size: 13px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input::placeholder {
+    color: #8998aa;
+}
+
+.form-group input:focus {
+    border-color: #557fa6;
+    box-shadow: 0 0 0 3px rgba(85, 127, 166, 0.14);
+}
+
+.password-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.forgot-link {
+    margin-bottom: 9px;
+    color: #365d85;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.forgot-link:hover,
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+
+/* =====================================
+   8. Remember me and submit button
+===================================== */
+
+.remember-option {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    width: fit-content;
+    margin: 2px 0 25px;
+    color: var(--text);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.remember-option input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--navy);
+    cursor: pointer;
+}
+
+.sign-in-button {
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: none;
+    border-radius: 10px;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.sign-in-button span {
+    font-size: 18px;
+    transition: transform 0.2s;
+}
+
+.sign-in-button:hover {
+    background: var(--navy-light);
+}
+
+.sign-in-button:hover span {
+    transform: translateX(4px);
+}
+
+.signup-text {
+    margin-top: 25px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.signup-text a {
+    margin-left: 5px;
+    color: #284e77;
+    font-weight: 700;
+}
+
+.security-note {
+    margin-top: 50px;
+    color: #94a1af;
+    text-align: center;
+    font-size: 11px;
+}
+
+
+/* =====================================
+   9. Tablet adaptation
+===================================== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .login-page {
+        grid-template-columns: 0.85fr 1.15fr;
+    }
+
+    .brand-panel {
+        padding: 35px;
+    }
+
+    .brand-content {
+        min-height: 580px;
+    }
+
+    .brand-message {
+        margin-top: 65px;
+    }
+
+    .brand-message h1 {
+        font-size: 38px;
+    }
+
+    .form-panel {
+        padding: 45px 35px;
+    }
+}
+
+
+/* =====================================
+   10. Mobile adaptation
+===================================== */
+
+@media (max-width: 767px) {
+    .login-page {
+        display: block;
+        min-height: 100vh;
+    }
+
+    .brand-panel {
+        display: none;
+    }
+
+    .form-panel {
+        min-height: 100vh;
+        padding: 38px 24px;
+        align-items: center;
+        background: var(--white);
+    }
+
+    .login-container {
+        max-width: 420px;
+    }
+
+    .form-logo {
+        margin-bottom: 43px;
+    }
+
+    .form-heading h2 {
+        font-size: 29px;
+    }
+
+    .security-note {
+        margin-top: 38px;
+    }
+}
+
+
+/* =====================================
+   11. Small mobile screens
+===================================== */
+
+@media (max-width: 360px) {
+    .form-panel {
+        padding: 30px 18px;
+    }
+
+    .form-logo {
+        margin-bottom: 35px;
+    }
+
+    .form-heading h2 {
+        font-size: 25px;
+    }
+
+    .forgot-link {
+        font-size: 10px;
+    }
+}
